@@ -22,10 +22,17 @@ div.left {
 div.bold {
   font-style:italic;
 }
-img.flight {
+.flight {
   width: 100%;
   height: 70%;
 }
+
 span.icon {
   padding: 0 2px;
 }
+
+// @media only screen and (max-width: 500px) {
+  .mid {
+       text-align: center;
+  }
+// }
