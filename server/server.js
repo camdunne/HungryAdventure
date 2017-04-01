@@ -15,7 +15,7 @@ app.get('*', (request, response) => {
 });
 
 
-const server = app.listen(8002, () => {
+const server = app.listen(8004, () => {
   const host = server.address().address;
   const port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);

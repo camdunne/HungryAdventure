@@ -57,7 +57,7 @@ module.exports = {
           const destinationObj = flightResults[i][arrivalKeyName];
           if (destinationObj.location && cache.indexOf(destinationObj.location) === -1) {
             options = {
-              url: `https://pixabay.com/api/?key=${process.env.PIXABAY_API}&q=${destinationObj.location}&image_type=photo&orientation=horizontal&category=places`,
+              url: `https://pixabay.com/api/?key=${process.env.PIXABAY_API}&q=${destinationObj.location}&image_type=photo&orientation=horizontal&category=travel`,
               headers: {
                 contentType: 'application/json',
               },
@@ -77,7 +77,7 @@ module.exports = {
             const pixParsed = JSON.parse(eachPic);
             const topimages = [];
             pixParsed.hits.forEach((elem, i) => {
-              if (i > 5) {
+              if (i > 4) {
                 return;
               }
               topimages.push(elem.webformatURL);
