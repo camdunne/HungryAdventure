@@ -61,6 +61,7 @@ span.icon {
 
 .budgetSearch {
   padding-right: 0;
+  margin-right: 5px;
 }
 #header{
   height:50%;
@@ -68,11 +69,3 @@ span.icon {
     height: 100%;
   }
 }
-.map {
-  width: 100%;
-  height: 20%;
-}
-
-.input .open > a,
-.input .open > a:hover,
-.input .open > a:focus {background-color: transparent;}
