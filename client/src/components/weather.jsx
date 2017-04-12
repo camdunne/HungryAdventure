@@ -14,7 +14,7 @@ class Weather extends Component {
         <div>loading</div>
       );
     }
-    const herojpg = this.props.destination.imageUrl[0];
+    const herojpg = this.props.destination.imageUrl[1] || this.props.destination.imageUrl[0];
     return (
       <Col sm={4}>
         <div id="card" className="weater">

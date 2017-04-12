@@ -16,10 +16,31 @@
   <title> Hungry Adventure </title>
 </head>
 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  $('.carousel[data-type="multi"] .item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i=0;i<2;i++) {
+      next=next.next();
+      if (!next.length) {
+      	next = $(this).siblings(':first');
+    	}
+
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
+</script>
+
 <body id="page-top">
   <div id="app"></div>
   <script src="/bundle.js" ></script>
-
 <!-- SCRIPT YOU SHOULD TRANSFER OUT -->
 <script>
   var options = {
@@ -45,8 +66,7 @@ navigator.geolocation.getCurrentPosition(success, error, options);
   </script>
 <!-- PLEASE TRANSFER THIS OUT-->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>
