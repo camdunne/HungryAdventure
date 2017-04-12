@@ -2,8 +2,8 @@
 ++ ORIGINAL  STYLE ++
 +++++++++++++++++++*/
 .maps {
-  width: 50%;
-  height: 80%;
+  width: 80%;
+  height: 50%;
   margin: auto;
   padding-top: 2%;
   padding-bottom: 1%;
@@ -401,12 +401,12 @@ body {
 }
 
 .parallax {
-  background: 
+  background:
     linear-gradient(
-      rgba(0, 0, 0, 0.5), 
+      rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),
-  url("https://static.pexels.com/photos/65125/pexels-photo-65125.jpeg") no-repeat center center fixed; 
+  url("https://static.pexels.com/photos/65125/pexels-photo-65125.jpeg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -438,12 +438,12 @@ body {
 
 @media screen and (max-width: 720px) {
   .parallax {
-    background: 
+    background:
       linear-gradient(
-        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5),
         rgba(0, 0, 0, 0.5)
       ),
-    url("https://static.pexels.com/photos/65125/pexels-photo-65125.jpeg") fixed; 
+    url("https://static.pexels.com/photos/65125/pexels-photo-65125.jpeg") fixed;
     background-size: cover;
     height: 100%
   }

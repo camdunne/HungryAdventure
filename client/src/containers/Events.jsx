@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Event from '../components/Event';
 import GoogleMapReact from 'google-map-react';
-const API = require('../keys/mapsKey.js');
+import { fetchEvents } from '../actions/eventsAction';
+import Event from '../components/Event';
+// import GoogleMaps from './GoogleMaps'
 import Pin from '../components/pin';
 import BudgetBar from '../components/budgetBar';
+
+const API = require('../keys/mapsKey.js');
 
 class Events extends Component {
   constructor(props) {
@@ -25,7 +28,7 @@ class Events extends Component {
           <BudgetBar budget={this.props.budget} />
         </div>
         <div className="maps">
-        <button><Link to="/storypage">Checkout</Link></button>
+          <button><Link to="/storypage">Checkout</Link></button>
           <GoogleMapReact
             defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
             defaultZoom={14}
