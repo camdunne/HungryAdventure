@@ -16,19 +16,21 @@ class GoogleMaps extends Component {
       );
     }
     return (
-      <GoogleMapReact
-        options={{ scrollwheel: false }}
-        defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
-        defaultZoom={14}
-        bootstrapURLKeys={{ key: API.googleMaps() }}
-      >
-        {this.props.hotels.hotels.map((hotel, index) =>
-          <div className="pin" lat={hotel.lat} lng={hotel.lng} key={index}>
-            <span className="glyphicon glyphicon-pushpin" />
+      <div className="maps">
+        <GoogleMapReact
+          options={{ scrollwheel: false }}
+          defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
+          defaultZoom={14}
+          bootstrapURLKeys={{ key: API.googleMaps() }}
+        >
+          {this.props.hotels.hotels.map((hotel, index) =>
+            <div className="pin" lat={hotel.lat} lng={hotel.lng} key={index}>
+              <span className="glyphicon glyphicon-pushpin" />
             ${hotel.price}
-          </div>,
+            </div>,
         )}
-      </GoogleMapReact>
+        </GoogleMapReact>
+      </div>
     );
   }
 }
