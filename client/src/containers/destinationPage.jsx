@@ -25,7 +25,6 @@ class destinationPage extends Component {
     const activityCost = this.props.budget.viatorEvents || 0;
     const foodCost = this.props.budget.yelpEvents || 0;
     const totalBudget = budget - flightCost - hotelCost - activityCost - foodCost;
-    console.log('meein UP BIG TIMEEEE', this.props);
     return (<div>
       <div><Link to="/events">YELP</Link></div>
       <div><Link to="/viator">VIATOR</Link></div>
@@ -76,9 +75,7 @@ class destinationPage extends Component {
         <Weather />
       </div>
       <div style={{ display: 'grid' }} />
-      <div className="maps">
-        <GoogleMaps locator={this.props.geo.locator} hotelsArr={this.props.hotels.hotels} />
-      </div>
+      <GoogleMaps locator={this.props.geo.locator} hotelsArr={this.props.hotels.hotels} />
       <HotelList hotels={this.props.hotels} destination={this.props.destination} />
     </div>
     );

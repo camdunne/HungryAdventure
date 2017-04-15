@@ -27,7 +27,7 @@ class GoogleMaps extends Component {
         >
           {this.props.hotelsArr.map((hotel, index) =>
             <HotelPin
-              lat={hotel.lat} lng={hotel.lng} key={index}
+              lat={hotel.lat} lng={hotel.lng} key={index} price={hotel.price}
             />,
         )}
         </GoogleMapReact>

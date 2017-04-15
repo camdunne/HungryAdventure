@@ -37,11 +37,10 @@ class Events extends Component {
             bootstrapURLKeys={{ key: API.googleMaps() }}
           >
             {this.props.eventsArr.events.map((event, index) =>
-              <div className="pin" lat={event.coordinates.latitude} lng={event.coordinates.longitude} key={index}>
-                <span className="glyphicon glyphicon-pushpin" />
-                {this.props.text}
-              </div>,
-            )}
+              <YelpPin
+                lat={event.coordinates.latitude} lng={event.coordinates.longitude} text={event.name} key={index}
+              />,
+              )}
           </GoogleMapReact>
         </div>
         {this.props.eventsArr.events.map((event, index) =>
