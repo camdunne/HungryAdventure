@@ -77,7 +77,7 @@ class destinationPage extends Component {
       </div>
       <div style={{ display: 'grid' }} />
       <div className="maps">
-        <GoogleMaps />
+        <GoogleMaps locator={this.props.geo.locator} hotelsArr={this.props.hotels.hotels} />
       </div>
       <HotelList hotels={this.props.hotels} destination={this.props.destination} />
     </div>

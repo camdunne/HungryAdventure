@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
+import HotelPin from '../components/HotelPin';
 const API = require('../keys/mapsKey.js');
+
 
 class GoogleMaps extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class GoogleMaps extends Component {
   }
 
   render() {
-    if (this.props.locator === undefined) {
+    if (this.props.locator === undefined || this.props.hotels === undefined) {
       return (
         <div>loading</div>
       );
@@ -23,11 +25,10 @@ class GoogleMaps extends Component {
           defaultZoom={14}
           bootstrapURLKeys={{ key: API.googleMaps() }}
         >
-          {this.props.hotels.hotels.map((hotel, index) =>
-            <div className="pin" lat={hotel.lat} lng={hotel.lng} key={index}>
-              <span className="glyphicon glyphicon-pushpin" />
-            ${hotel.price}
-            </div>,
+          {this.props.hotelsArr.map((hotel, index) =>
+            <HotelPin
+              lat={hotel.lat} lng={hotel.lng} key={index}
+            />,
         )}
         </GoogleMapReact>
       </div>
