@@ -5,7 +5,7 @@ import GoogleMapReact from 'google-map-react';
 import { fetchEvents } from '../actions/eventsAction';
 import Event from '../components/Event';
 // import GoogleMaps from './GoogleMaps'
-import Pin from '../components/pin';
+import YelpPin from '../components/YelpPin';
 import BudgetBar from '../components/budgetBar';
 
 const API = require('../keys/mapsKey.js');
@@ -31,12 +31,16 @@ class Events extends Component {
         </div>
         <div className="maps">
           <GoogleMapReact
+            options={{ scrollwheel: false }}
             defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
             defaultZoom={14}
             bootstrapURLKeys={{ key: API.googleMaps() }}
           >
             {this.props.eventsArr.events.map((event, index) =>
-              <Pin lat={event.coordinates.latitude} lng={event.coordinates.longitude} text={event.name} key={index} />,
+              <div className="pin" lat={event.coordinates.latitude} lng={event.coordinates.longitude} key={index}>
+                <span className="glyphicon glyphicon-pushpin" />
+                {this.props.text}
+              </div>,
             )}
           </GoogleMapReact>
         </div>

@@ -6,6 +6,7 @@ const API = require('../keys/mapsKey.js');
 class GoogleMaps extends Component {
   constructor(props) {
     super(props);
+    console.log('GOOGLEMAPS', this.props);
   }
 
   render() {
@@ -15,15 +16,19 @@ class GoogleMaps extends Component {
       );
     }
     return (
-      <div className="maps">
-        <GoogleMapReact
-          options={{ scrollwheel: false }}
-          defaultCenter={{ lat: this.props.locator.latitude, lng: this.props.locator.longitude }}
-          defaultZoom={13}
-          bootstrapURLKeys={{ key: API.googleMaps() }}
-          key={this.props.locator.latitude}
-        />
-      </div>
+      <GoogleMapReact
+        options={{ scrollwheel: false }}
+        defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
+        defaultZoom={14}
+        bootstrapURLKeys={{ key: API.googleMaps() }}
+      >
+        {this.props.hotels.hotels.map((hotel, index) =>
+          <div className="pin" lat={hotel.lat} lng={hotel.lng} key={index}>
+            <span className="glyphicon glyphicon-pushpin" />
+            ${hotel.price}
+          </div>,
+        )}
+      </GoogleMapReact>
     );
   }
 }

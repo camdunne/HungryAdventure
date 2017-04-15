@@ -23,12 +23,13 @@
 
 .pin {
 /*width: 70px;
-height: 30px;
-background-color: red;*/
+height: 30px;*/
+background: white;
+border-radius: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-color: red;
+color: black;
 text-shadow: 1px 1px 1px white;
 }
 
@@ -475,4 +476,3 @@ body {
 .donutAlign {
   margin-top: 250px;
 }
-
