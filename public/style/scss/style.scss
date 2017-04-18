@@ -136,9 +136,11 @@ span.icon {
 .btn-solid{
   color:#fff;
   background-color:#7c25f8;
-  padding: 17px 48px;
+  padding: 14px 45px;
   border-width: 0;
   letter-spacing: 2px;
+  display: inline-block;
+  margin-top: 20px;
 }
 .btn-solid:hover{
   color:#fff;
@@ -164,3 +166,11 @@ span.icon {
   line-height:1.1;
   font-size: 40px;
 }
+div .rule {
+  p {
+    font-size: 24px;
+  }
+}
+input[type=checkbox], input[type=radio] {
+    margin: 40px 0 0;
+  }

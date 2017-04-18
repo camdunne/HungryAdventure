@@ -31,10 +31,10 @@ class searchForm extends Component {
     return (<div>
       <center>
         <Form inline onSubmit={handleSubmit}>
-          
+
           <FormGroup>
             <div className="rw-datetimepicker rw-widget budgetSearch" >
-              <Field className="rw-input" name="Budget" component="input" type="value" placeholder="Budget" />
+              <Field className="rw-input" name="Budget" component="input" type="number" placeholder="Budget" />
             </div>
           </FormGroup>
 

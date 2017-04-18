@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
 import DonutChart from 'react-donut-chart';
-import { Col, Button } from 'react-bootstrap';
+import { Col, Checkbox } from 'react-bootstrap';
 import { googleMaps } from '../keys/mapsKey';
 import { StoryPin } from '../components/Pins';
-import { pinArray } from '../../utils/storyPageHelpers';
+import { pinArray, yelpPrice } from '../../utils/storyPageHelpers';
 
 class StoryPage extends Component {
   render() {
@@ -25,30 +25,25 @@ class StoryPage extends Component {
           }}
         >
           <h1 className="storyCity">{this.props.destination.city}</h1>
-          <div className="infoContainer">
-            <div className="container">
-              <h3 className="h3">Summary</h3>
-              <div className="storyMap">
-                <GoogleMapReact
-                  options={{ scrollwheel: false }}
-                  defaultCenter={{
-                    lat: this.props.locator.latitude,
-                    lng: this.props.locator.longitude,
-                  }}
-                  defaultZoom={15}
-                  bootstrapURLKeys={{ key: googleMaps() }}
-                >
-                  {mapArray.map(elem =>
-                    <StoryPin
-                      lat={elem.lat || elem.coordinates.latitude}
-                      lng={elem.lng || elem.coordinates.longitude}
-                      text={elem.hotel || elem.name}
-                      key={elem.id || elem.name}
-                    />,
+          <div className="storyMap">
+            <GoogleMapReact
+              options={{ scrollwheel: false }}
+              defaultCenter={{
+                lat: this.props.locator.latitude,
+                lng: this.props.locator.longitude,
+              }}
+              defaultZoom={12}
+              bootstrapURLKeys={{ key: googleMaps() }}
+            >
+              {mapArray.map(elem =>
+                <StoryPin
+                  lat={elem.lat || elem.coordinates.latitude}
+                  lng={elem.lng || elem.coordinates.longitude}
+                  text={elem.hotel || elem.name}
+                  key={elem.id || elem.name}
+                />,
                 )}
-                </GoogleMapReact>
-              </div>
-            </div>
+            </GoogleMapReact>
           </div>
           <div className="blankContainer">
             <div className="container">
@@ -58,9 +53,12 @@ class StoryPage extends Component {
                   <h3 className="text-white h3">${this.props.destination.price}</h3>
                   <div className="clearfix" />
                   <div className="text-white rule">
-                    {this.props.destination.originTerminal} to {this.props.destination.IataCode}
+                    <p>{this.props.destination.originTerminal} to {this.props.destination.IataCode}</p>
+                    <p>{this.props.destination.carrier}</p>
+                    <p>{this.props.destination.arrivalDate} until {this.props.destination.departureDate}</p>
                   </div>
-                  <a href={this.props.destination.url} target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                  <a href={this.props.destination.url} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                  <Checkbox className="right" />
                 </div>
               </Col>
             </div>
@@ -73,9 +71,12 @@ class StoryPage extends Component {
                   <h3 className="text-white h3">${this.props.hotel.price}</h3>
                   <div className="clearfix" />
                   <div className="text-white rule">
-                    {this.props.hotel.hotel}
+                    <p>{this.props.hotel.hotel}</p>
+                    <p>{this.props.hotel.neighborhood || this.props.destination.city}</p>
+                    <p>{this.props.hotel.address}</p>
                   </div>
-                  <a href={this.props.hotel.url} target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                  <a href={this.props.hotel.url} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                  <Checkbox className="right" validationState="success" />
                 </Col>
               </div>
             </div>
@@ -87,12 +88,15 @@ class StoryPage extends Component {
                   <h3 className="price-title text-aquamarine h3">Restaurants</h3>
                   {this.props.yelpEvents.map((event, i) =>
                     <div key={event.name}>
-                      <h3 className="text-white h3">({event.price})</h3>
+                      <h3 className="text-white h3">~${yelpPrice(event.price)}</h3>
                       <div className="clearfix" />
                       <div className="text-white rule">
-                        {event.name}
+                        <p>{event.name}</p>
+                        <p>{event.location.address1} {event.location.city} {event.location.state}, {event.location.country} {event.location.zip_code}</p>
+                        <p>{event.phone}</p>
                       </div>
-                      <a href={event.url} target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Link</a>
+                      <a href={event.url} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Link</a>
+                      <Checkbox className="right" />
                       {i < this.props.yelpEvents.length - 1 ?
                         <div className="space" />
                         : '' }
@@ -113,7 +117,8 @@ class StoryPage extends Component {
                       <div className="text-white rule">
                         {event.title}
                       </div>
-                      <a href={`https://www.viator.com/${event.url}`} target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                      <a href={`https://www.viator.com/${event.url}`} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                      <Checkbox className="right" />
                       {i < this.props.viatorEvents.length - 1 ?
                         <div className="space" />
                         : '' }

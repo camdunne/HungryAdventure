@@ -6,6 +6,7 @@ module.exports = {
       const list = {};
       if (elem.listing.star_rating !== null && elem.listing.star_rating > 4) {
         list.hotel = 'airbnb';
+        list.address = elem.listing.public_address;
         list.id = elem.listing.id;
         list.lat = elem.listing.lat;
         list.lng = elem.listing.lng;

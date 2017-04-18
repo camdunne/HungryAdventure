@@ -10,6 +10,7 @@
 
   <!-- Style Sheet -->
   <link href="//fonts.googleapis.com/css?family=Gudea|Quicksand" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="style/minify/style.css">
 
   <!-- Title -->
@@ -67,13 +68,13 @@ var svg = d3.select("#graph").append("svg").attr("width",300).attr("height",250)
 svg.append("g").attr("id","quotesDonut");
 
 Donut3D.draw("quotesDonut", salesData, 150, 100, 130, 100, 30, 0);
-  
+
 function changeData(){
   Donut3D.transition("quotesDonut", randomData(), 130, 100, 30, 0);
 }
 
 function randomData(){
-  return salesData.map(function(d){ 
+  return salesData.map(function(d){
     return {label:d.label, value: d.value +50, color:d.color};});
 }
 

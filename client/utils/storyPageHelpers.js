@@ -9,4 +9,15 @@ module.exports = {
     }
     return results;
   },
+  yelpPrice: (bling) => {
+    const len = bling.length;
+    if (len <= 1) {
+      return 10;
+    } else if (len === 2) {
+      return 20;
+    } else if (len === 3) {
+      return 45;
+    }
+    return 100;
+  },
 };

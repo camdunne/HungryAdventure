@@ -31,8 +31,11 @@ class Events extends Component {
         <div className="maps">
           <GoogleMapReact
             options={{ scrollwheel: false }}
-            defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
-            defaultZoom={14}
+            defaultCenter={{
+              lat: this.props.geo.locator.latitude,
+              lng: this.props.geo.locator.longitude,
+            }}
+            defaultZoom={12}
             bootstrapURLKeys={{ key: googleMaps() }}
           >
             {this.props.eventsArr.events.map((event, index) =>
