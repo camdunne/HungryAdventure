@@ -80,8 +80,8 @@ class StoryPage extends Component {
                 </Col>
               </div>
             </div>
-          : '' }
-          {this.props.yelpEvents ?
+          : <div /> }
+          {this.props.yelpEvents.length > 0 ?
             <div className="blankContainer">
               <div className="container">
                 <Col sm={10}>
@@ -99,13 +99,13 @@ class StoryPage extends Component {
                       <Checkbox className="right" />
                       {i < this.props.yelpEvents.length - 1 ?
                         <div className="space" />
-                        : '' }
+                        : <div /> }
                     </div>)}
                 </Col>
               </div>
             </div>
           : '' }
-          {this.props.viatorEvents ?
+          {this.props.viatorEvents.length > 0 ?
             <div className="infoContainer">
               <div className="container">
                 <Col sm={10}>
@@ -121,7 +121,7 @@ class StoryPage extends Component {
                       <Checkbox className="right" />
                       {i < this.props.viatorEvents.length - 1 ?
                         <div className="space" />
-                        : '' }
+                        : <div /> }
                     </div>)}
                 </Col>
               </div>

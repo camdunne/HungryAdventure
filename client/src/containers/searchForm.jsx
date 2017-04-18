@@ -50,7 +50,7 @@ class searchForm extends Component {
             </div>
           </FormGroup>
           <FormGroup>
-            <Button bsStyle="custom" type="submit"> Submit </Button>
+            <Button bsStyle="custom" type="submit" style={{ borderRadius: '0' }}> Submit </Button>
           </FormGroup>
         </Form>
       </center>

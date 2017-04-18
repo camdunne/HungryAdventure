@@ -38,7 +38,6 @@ class Layout extends React.Component {
      timeout: 5000,
      maximumAge: 0
    };
-   console.log("<===IM BEEN RUN IN HERE===>")
    const success = (pos) => {
      let crd = pos.coords;
 
@@ -77,7 +76,6 @@ class Layout extends React.Component {
   }
 
   render () {
-    console.log('****_inside of Layout.jsx**',this.props)
      return (
       <div>
       <header>
@@ -90,7 +88,6 @@ class Layout extends React.Component {
               <hr></hr>
               <center>
                 <Search onSubmit={this.submit} />
-
               </center>
             </div>
           </div>
@@ -105,7 +102,7 @@ class Layout extends React.Component {
                   <hr className="light"></hr>
                   <p className="text-faded">Do you have a budget and data you're available but don't know where to go or what your options are? We have you covered! Out site provides a one stop shop for all travel
                   needs.</p>
-                  <a href="#search" className="page-scroll btn btn-default btn-xl sr-button">Lets Get Started!</a>
+                <a href="#" className="page-scroll btn btn-default btn-xl sr-button" style={{ borderRadius: '0', backgroundColor: 'white' }}>Let's Get Started!</a>
                 </div>
             </div>
         </div>
@@ -159,90 +156,54 @@ class Layout extends React.Component {
             <div className="row no-gutter popup-gallery">
                 <div className="col-lg-4 col-sm-6">
                     <a href="../../assets/3.jpg" className="portfolio-box">
-                        <img src="../../assets/3.jpg" className="img-responsive customImg" alt=""></img>
+                        <img src="../../assets/3.jpg" className="img-responsive headImg" alt=""></img>
                         <div className="portfolio-box-caption">
                             <div className="portfolio-box-caption-content">
-                                <div className="project-category text-faded">
-                                    Category
-                                </div>
-                                <div className="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div className="col-lg-4 col-sm-6">
                     <a href="../../assets/4.jpg" className="portfolio-box">
-                        <img src="../../assets/4.jpg" className="img-responsive customImg" alt=""></img>
+                        <img src="../../assets/4.jpg" className="img-responsive headImg" alt=""></img>
                         <div className="portfolio-box-caption">
                             <div className="portfolio-box-caption-content">
-                                <div className="project-category text-faded">
-                                    Category
-                                </div>
-                                <div className="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div className="col-lg-4 col-sm-6">
                     <a href="../../assets/5.jpg" className="portfolio-box">
-                        <img src="../../assets/5.jpg" className="img-responsive customImg" alt=""></img>
+                        <img src="../../assets/5.jpg" className="img-responsive headImg" alt=""></img>
                         <div className="portfolio-box-caption">
                             <div className="portfolio-box-caption-content">
-                                <div className="project-category text-faded">
-                                    Category
-                                </div>
-                                <div className="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div className="col-lg-4 col-sm-6">
                     <a href="../../assets/6.jpg" className="portfolio-box">
-                        <img src="../../assets/6.jpg" className="img-responsive customImg" alt=""></img>
+                        <img src="../../assets/6.jpg" className="img-responsive headImg" alt=""></img>
                         <div className="portfolio-box-caption">
                             <div className="portfolio-box-caption-content">
-                                <div className="project-category text-faded">
-                                    Category
-                                </div>
-                                <div className="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div className="col-lg-4 col-sm-6">
                     <a href="../../assets/1.jpg" className="portfolio-box">
-                        <img src="../../assets/1.jpg" className="img-responsive customImg" alt=""></img>
+                        <img src="../../assets/1.jpg" className="img-responsive headImg" alt=""></img>
                         <div className="portfolio-box-caption">
                             <div className="portfolio-box-caption-content">
-                                <div className="project-category text-faded">
-                                    Category
-                                </div>
-                                <div className="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div className="col-lg-4 col-sm-6">
                     <a href="../../assets/5.jpg" className="portfolio-box">
-                        <img src="../../assets/5.jpg" className="img-responsive customImg" alt=""></img>
+                        <img src="../../assets/5.jpg" className="img-responsive headImg" alt=""></img>
                         <div className="portfolio-box-caption">
                             <div className="portfolio-box-caption-content">
-                                <div className="project-category text-faded">
-                                    Category
-                                </div>
-                                <div className="project-name">
-                                    Project Name
-                                </div>
                             </div>
                         </div>
                     </a>

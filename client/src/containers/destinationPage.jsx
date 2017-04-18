@@ -17,7 +17,7 @@ import DonutChart from 'react-donut-chart';
 class destinationPage extends Component {
 
   componentWillMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -42,7 +42,7 @@ class destinationPage extends Component {
           <hr className="pageHr" />
           <p className="pageTitle">{this.props.destination.city}, {this.props.destination.country}</p>
         </div>
-          <Button className="checkout"> <Link to="/storypage">Checkout</Link></Button>
+        <Button className="checkout" style={{ borderRadius: '0' }}> <Link to="/storypage">Checkout</Link></Button>
       </div>
 
       <div className="pageContainer">
@@ -65,7 +65,7 @@ class destinationPage extends Component {
         /></Col>
         <Col sm={4} xs={12} className="mobileSpacing"><FrommersInfo /></Col>
       </div>
-      
+
       <Col sm={12} xs={12} className="mapsPadding"><div className="maps"><GoogleMaps locator={this.props.geo.locator} hotelsArr={this.props.hotels.hotels} /></div></Col>
       <HotelList hotels={this.props.hotels} destination={this.props.destination} />
       <ViatorEvents />
