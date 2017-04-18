@@ -9,7 +9,7 @@ import 'react-widgets/dist/css/react-widgets.css';
 
 // +++++ PLUGIN
 import { Field, reduxForm } from 'redux-form';
-import { DateTimePicker, Multiselect } from 'react-widgets';
+import { DateTimePicker } from 'react-widgets';
 import moment from 'moment';
 import momentLocaliser from '../../../node_modules/react-widgets/lib/localizers/moment';
 momentLocaliser(moment);
