@@ -17,7 +17,7 @@ class GoogleMaps extends Component {
     return (
       <GoogleMapReact
         options={{ scrollwheel: false }}
-        defaultCenter={{ lat: this.props.geo.locator.latitude, lng: this.props.geo.locator.longitude }}
+        defaultCenter={{ lat: this.props.locator.latitude, lng: this.props.locator.longitude }}
         defaultZoom={11}
         bootstrapURLKeys={{ key: googleMaps() }}
       >
