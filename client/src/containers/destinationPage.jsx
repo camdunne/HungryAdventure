@@ -19,7 +19,7 @@ import DonutChart from 'react-donut-chart';
 class destinationPage extends Component {
 
   componentWillMount() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
 
   loadDestination = () => {
