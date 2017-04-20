@@ -2,7 +2,8 @@ const NodeGeocoder = require('node-geocoder');
 
 module.exports = {
   location(req, res) {
-    const location = req.query.location;
+    const city = req.query.city;
+    const country = req.query.country;
     const options = {
       provider: 'google',
       httpAdapter: 'https',
@@ -11,7 +12,7 @@ module.exports = {
 
     const geocoder = NodeGeocoder(options);
 
-    geocoder.geocode(location)
+    geocoder.geocode(`${city} ${country}`)
       .then(result => res.send(result))
       .catch(err => res.send(err));
   },
