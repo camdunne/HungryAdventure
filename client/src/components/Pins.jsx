@@ -1,14 +1,14 @@
 import React from 'react';
 
-const HotelPin = props => (
+const HotelPin = () => (
   <div className="fa fa-home" style={{ fontSize: '24px', color: '#f05f40' }} />
     );
 
-const YelpPin = props => (
+const YelpPin = () => (
   <div className="fa fa-cutlery" style={{ fontSize: '24px', color: 'blue' }} />
     );
 
-const FlightPin = props => (
+const FlightPin = () => (
   <div className="fa fa-plane" style={{ fontSize: '24px' }} />
     );
 
