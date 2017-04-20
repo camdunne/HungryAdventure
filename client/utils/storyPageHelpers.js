@@ -1,7 +1,6 @@
 module.exports = {
   pinArray: (data) => {
     const results = [];
-    console.log(results);
     if (data.hotel) {
       if (data.hotel.lat && data.hotel.lng) results.push(data.hotel);
     }
