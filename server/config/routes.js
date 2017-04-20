@@ -17,16 +17,16 @@ module.exports = (app) => {
   app.get('/api/dbQuery', databaseController.getProfile);
   app.get('/api/viator', viatorController.scrape);
   app.get('/api/frommers', frommersController.scrape);
+  app.get('/api/google', googlePlacesController.getGoogleData);
+  app.get('/api/terminal', geocoderController.getTerminal);
 
   // Activate for testing
-  // app.get('/api/anywhere', anywhereController.getAnywhereDummy);
-  // app.get('/api/hotels', hotelController.getHotelsDummy);
+  app.get('/api/anywhere', anywhereController.getAnywhereDummy);
+  app.get('/api/hotels', hotelController.getHotelsDummy);
 
   // //Live
-  app.get('/api/anywhere', anywhereController.getAnywhere);
-  app.get('/api/hotels', hotelController.getHotels);
-
-  app.get('/api/google', googlePlacesController.getGoogleData);
+  // app.get('/api/anywhere', anywhereController.getAnywhere);
+  // app.get('/api/hotels', hotelController.getHotels);
 
   // Analysis
   app.get('/api/dbSearchQuerySave', databaseController.saveQuery);

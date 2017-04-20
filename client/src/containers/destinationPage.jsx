@@ -54,7 +54,7 @@ class destinationPage extends Component {
     const activityCost = this.props.budget.viatorEvents || 0;
     const foodCost = this.props.budget.yelpEvents || 0;
     const totalBudget = budget - flightCost - hotelCost - activityCost - foodCost;
-    const mapArray = pinArray(this.props.current);
+    const mapArray = pinArray(this.props);
 
     return (<div>
       <Link to="/storypage"><div className="circle"><div className="checkoutbutton glyphicon glyphicon-shopping-cart" /></div></Link>
@@ -113,8 +113,13 @@ class destinationPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state,
+const mapStateToProps = ({ geo, hotels, destination, budget, current }) => ({
+  geo,
+  hotels,
+  destination,
+  budget,
+  current,
+  ...current,
 });
 
 export default connect(mapStateToProps, null)(destinationPage);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
 
-import { HotelPin, YelpPin } from '../components/Pins';
+import { HotelPin, YelpPin, FlightPin } from '../components/Pins';
 import { googleMaps } from '../keys/mapsKey';
 
 class GoogleMaps extends Component {
@@ -22,7 +22,14 @@ class GoogleMaps extends Component {
         bootstrapURLKeys={{ key: googleMaps() }}
       >
         {this.props.mapArray.map((elem, index) => {
-          if (elem.lat) {
+          if (elem.latitude) {
+            return (
+              <FlightPin
+                lat={elem.latitude}
+                lng={elem.longitude}
+                key={elem.city}
+              />);
+          } else if (elem.lat) {
             return (<HotelPin
               lat={elem.lat}
               lng={elem.lng}
