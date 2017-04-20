@@ -20,6 +20,7 @@ class GoogleMaps extends Component {
         defaultCenter={{ lat: this.props.locator.latitude, lng: this.props.locator.longitude }}
         defaultZoom={11}
         bootstrapURLKeys={{ key: googleMaps() }}
+        
       >
         {this.props.mapArray.map((elem, index) => {
           if (elem.lat) {

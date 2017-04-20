@@ -55,7 +55,7 @@ class destinationPage extends Component {
     const foodCost = this.props.budget.yelpEvents || 0;
     const totalBudget = budget - flightCost - hotelCost - activityCost - foodCost;
     const mapArray = pinArray(this.props.current);
-    
+
     return (<div>
       <Link to="/storypage"><div className="circle"><div className="checkoutbutton glyphicon glyphicon-shopping-cart" /></div></Link>
       {this.loadDestination()}
@@ -101,7 +101,7 @@ class destinationPage extends Component {
 
       <Col sm={12} xs={12} className="mapsPadding">
         <div className="maps">
-          <GoogleMaps key={this.props.current.destination.city} locator={this.props.geo.locator} mapArray={mapArray} />
+          <GoogleMaps key={Math.random()} locator={this.props.geo.locator} mapArray={mapArray} />
         </div>
       </Col>
       <HotelList hotels={this.props.hotels} destination={this.props.destination} />
