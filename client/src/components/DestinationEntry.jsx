@@ -22,16 +22,19 @@ constructor (props){
   super(props);
 }
 
-handleSelect = (destination) => {
-  this.props.fetchHotels({city: destination.city});
+handleSelect = (destination, geo) => {
   this.props.destinationSet(destination);
   this.props.flightBudget({price: destination.price, original: Number(this.props.budget.original)});
-  this.props.fetchGeo({location: destination.city})
+  this.props.fetchGeo({city: destination.city, country: destination.country })
     .then((result) => {
       this.props.fetchWeather({
         latitude: result.payload.latitude,
-        longitude: result.payloadlongitude,
+        longitude: result.payload.longitude,
         time: destination.arrivalDate,
+      })
+      this.props.fetchHotels({
+        latitude: result.payload.latitude,
+        longitude: result.payload.longitude,
       })
     });
   this.props.destinationImage({destination: destination.imageUrl[0]})
@@ -56,10 +59,10 @@ render () {
   <section className="no-padding" id="locations">
     {this.props.destinations.destinations.map((destination, index) => (
        <div className="col-lg-4 col-sm-6" key={destination.city+index}>
-            <div className="event-card" onClick={ ()=> {this.handleSelect(destination)}} >
+            <div className="event-card" onClick={ ()=> {this.handleSelect(destination, this.props.geo)}} >
                 <img src={destination.imageUrl[this.getRandomInt(0,destination.imageUrl.length)]}
                   className="customImg" alt="Image not found" onError={(e)=>{e.target.src='https://ugotalksalot.files.wordpress.com/2016/06/no-thumb.jpg';}}/>
-                  <div className="card-text"> ${destination.price} {destination.city} , {destination.country}</div>      
+                  <div className="card-text"> ${destination.price} {destination.city} , {destination.country}</div>
             </div>
         </div>
       ))}
