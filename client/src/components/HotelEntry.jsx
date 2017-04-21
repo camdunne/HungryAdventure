@@ -12,11 +12,11 @@ class HotelEntry extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flag: "See More >>",
-    }
+      flag: 'See More >>',
+    };
   }
 
-  add = (hotel, props) => {
+  add(hotel, props) {
     this.props.currentHotel({ hotel });
     this.props.hotelBudget({
       id: hotel.id,
@@ -24,22 +24,25 @@ class HotelEntry extends Component {
       budget: props.budget,
       arrivalDate: props.destination.arrivalDate,
       departureDate: props.destination.departureDate,
-      });
+    });
     this.props.hotelImage({ hotel: hotel.pictures[0] });
   }
 
-  toggle = ({ hotels }) => {
+  toggle({ hotels }) {
     this.props.toggleHotels({ hotels });
-    scroll.scrollMore(500, { delay : 100 });
-    this.state.flag === "See More >>" ? (this.setState({flag: "See Less <<"})) : (this.setState({flag: "See More >>"}));
-
+    scroll.scrollMore(500, { delay: 100 });
+    if (this.state.flag === 'See More >>') {
+      this.setState({ flag: 'See Less <<' });
+    } else {
+      this.setState({ flag: 'See More >>' });
+    }
   }
-  select = (hotel, toggle) => {
-    this.props.toggleSelect({ hotel, select: toggle.select })
+  select(hotel, toggle) {
+    this.props.toggleSelect({ hotel, select: toggle.select });
   }
-  clickHotel = (hotel, props) => {
-    this.add(hotel, props);
-    this.select(hotel, props.toggle);
+  clickHotel(hotel, props) {
+    this.add(hotel, props).bind(this);
+    this.select(hotel, props.toggle).bind(this);
   }
 
   render() {
@@ -50,34 +53,35 @@ class HotelEntry extends Component {
     }
     return (
       <div>
-        <div className='hotelContainer'>
+        <div className="hotelContainer">
           <Row className="rowTitle">
             <Col xs={6} md={6}><h2>Hotels</h2></Col>
-            <Col xs={6} md={6}><div className="seeAll" onClick={()=> this.toggle(this.props.toggle)}>{this.state.flag}</div></Col>
+            <Col xs={6} md={6}><div className="seeAll" onClick={() => this.toggle(this.props.toggle).bind(this)}>{this.state.flag}</div></Col>
           </Row>
-    
+
           {this.props.hotels.hotels.map((hotel, index) => (
-            <Col md={4}
+            <Col
+              md={4}
               key={hotel.id}
               className={
-                "pad"
-                + ((index >= 3 && !this.props.toggle.hotels) ? " none" : "")
-                + ((this.props.toggle.select === hotel.id)? " select" : "")
+                `pad${
+                 (index >= 3 && !this.props.toggle.hotels) ? ' none' : ''
+                 }${(this.props.toggle.select === hotel.id) ? ' select' : ''}`
               }
-              onClick={()=> {  this.clickHotel(hotel, this.props) }}
-            >            
+              onClick={() => { this.clickHotel(hotel, this.props).bind(this); }}
+            >
               <div className="event-card hotel portfolio-box">
                 <img className="customImg" alt="" src={hotel.pictures[0]} />
-                <div className ="portfolio-box-caption"><div className="iconWrapper"><span className="glyphicon glyphicon-shopping-cart" /></div></div>
-                <div className='card-text hotel-text'>
-                    <div className="hotelInfo">
-                       <span className="infoSpacing">${hotel.price}</span>
-                       <span className="infoSpacing">{hotel.hotel}</span>
-                      {Array(Math.floor(hotel.rating)).fill(0).map((elem, i) =>
-                        <span key={hotel.id + i} className="glyphicon glyphicon-star" />,
+                <div className="portfolio-box-caption"><div className="iconWrapper"><span className="glyphicon glyphicon-shopping-cart" /></div></div>
+                <div className="card-text hotel-text">
+                  <div className="hotelInfo">
+                    <span className="infoSpacing">${hotel.price}</span>
+                    <span className="infoSpacing">{hotel.hotel}</span>
+                    {Array(Math.floor(hotel.rating)).fill(0).map((elem, i) =>
+                      <span key={hotel.id + i} className="glyphicon glyphicon-star" />,
                       )}
-                      <span className="glyphicons glyphicons-star" />
-                    </div>
+                    <span className="glyphicons glyphicons-star" />
+                  </div>
                 </div>
               </div>
             </Col>
@@ -94,4 +98,10 @@ const mapStateToProps = ({ hotels, destination, budget, toggle }) => ({
   budget,
   toggle,
 });
-export default connect(mapStateToProps, { currentHotel, hotelBudget, hotelImage, toggleHotels, toggleSelect })(HotelEntry);
+export default connect(mapStateToProps, {
+  currentHotel,
+  hotelBudget,
+  hotelImage,
+  toggleHotels,
+  toggleSelect,
+})(HotelEntry);
