@@ -39,8 +39,7 @@ class Layout extends React.Component {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
 
-  submit = (values) => {
-    console.log('VALUES', values);
+  submit(values) {
     this.getLocation();
     const saveQueryObj = {
       email: this.props.email || 'none',
@@ -69,7 +68,7 @@ class Layout extends React.Component {
                 <h1 id="homeHeading">HUNGRY ADVENTURE</h1><font size="8px">Beta</font>
                 <hr />
                 <center>
-                  <Search onSubmit={this.submit} />
+                  <Search onSubmit={this.submit.bind(this)} />
                 </center>
               </div>
             </div>
@@ -350,7 +349,7 @@ class Layout extends React.Component {
           <div className="container text-center">
             <div className="call-to-action">
               <h6>{'© 2017 Hungry Adventure All rights reserved. |'}
-                 <a className="githubLink" href="https://github.com/hungry-adventure" target="_blank" rel="noopener noreferrer"> Hungry Adventure GitHub</a>
+                <a className="githubLink" href="https://github.com/hungry-adventure" target="_blank" rel="noopener noreferrer"> Hungry Adventure GitHub</a>
               </h6>
 
             </div>
@@ -362,25 +361,23 @@ class Layout extends React.Component {
 }
 
 Layout.defaultProps = {
-  reset: () => {},
   email: '',
   airportCode: { airportCode: '' },
-  getBudget: () => {},
-  history: {},
-  fetchDestinations: () => {},
-  saveSearchQuery: () => {},
-  getGoogleData: () => {},
 };
 
 Layout.propTypes = {
-  reset: PropTypes.func,
+  reset: PropTypes.func.isRequired,
   email: PropTypes.string,
-  airportCode: PropTypes.instanceOf(Object),
-  getBudget: PropTypes.func,
-  history: PropTypes.instanceOf(Object),
-  fetchDestinations: PropTypes.func,
-  saveSearchQuery: PropTypes.func,
-  getGoogleData: PropTypes.func,
+  airportCode: PropTypes.shape({
+    airportCode: PropTypes.string,
+  }),
+  getBudget: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  fetchDestinations: PropTypes.func.isRequired,
+  saveSearchQuery: PropTypes.func.isRequired,
+  getGoogleData: PropTypes.func.isRequired,
 };
 
 // Connects to store

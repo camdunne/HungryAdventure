@@ -102,23 +102,39 @@ class HotelEntry extends Component {
   }
 }
 HotelEntry.defaultProps = {
-  currentHotel: () => {},
-  hotelBudget: () => {},
-  hotelImage: () => {},
-  toggleHotels: () => {},
-  toggleSelect: () => {},
   hotels: {},
   toggle: {},
 };
 
 HotelEntry.propTypes = {
-  currentHotel: PropTypes.func,
-  hotelBudget: PropTypes.func,
-  hotelImage: PropTypes.func,
-  toggleHotels: PropTypes.func,
-  toggleSelect: PropTypes.func,
-  hotels: PropTypes.shape,
-  toggle: PropTypes.shape,
+  currentHotel: PropTypes.func.isRequired,
+  hotelBudget: PropTypes.func.isRequired,
+  hotelImage: PropTypes.func.isRequired,
+  toggleHotels: PropTypes.func.isRequired,
+  toggleSelect: PropTypes.func.isRequired,
+  hotels: PropTypes.shape({
+    hotels: PropTypes.arrayOf(
+      PropTypes.shape({
+        hotel: PropTypes.string,
+        id: PropTypes.number,
+        lat: PropTypes.number,
+        lng: PropTypes.number,
+        neighborhood: PropTypes.oneOfType([
+          PropTypes.null,
+          PropTypes.string,
+        ]),
+        pictures: PropTypes.arrayOf(
+          PropTypes.string,
+        ),
+        price: PropTypes.number,
+        rating: PropTypes.number,
+        url: PropTypes.string,
+      }),
+    ),
+  }),
+  toggle: PropTypes.shape({
+    select: PropTypes.number,
+  }),
 };
 
 const mapStateToProps = ({ hotels, destination, budget, toggle }) => ({

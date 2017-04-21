@@ -7,6 +7,7 @@ import { googleMaps } from '../keys/mapsKey';
 
 
 const GoogleMaps = ({ locator, mapArray }) => {
+  console.log('MAPARRAY', mapArray);
   if (locator === undefined) {
     return (
       <div>loading</div>
@@ -48,8 +49,44 @@ GoogleMaps.defaultProps = {
   locator: {},
 };
 GoogleMaps.propTypes = {
-  locator: PropTypes.shape,
-  mapArray: PropTypes.arrayOf,
+  locator: PropTypes.shape({
+    administrativeLevels: PropTypes.shape({
+      level1long: PropTypes.string,
+      level1short: PropTypes.string,
+      level2long: PropTypes.string,
+      level2short: PropTypes.string,
+    }),
+    city: PropTypes.string,
+    country: PropTypes.string,
+    countryCode: PropTypes.string,
+    extra: PropTypes.shape({
+      confidence: PropTypes.number,
+      establishment: PropTypes.oneOfType([
+        PropTypes.null,
+        PropTypes.string,
+      ]),
+      googlePlaceId: PropTypes.string,
+      neightborhood: PropTypes.oneOfType([
+        PropTypes.null,
+        PropTypes.string,
+      ]),
+      premise: PropTypes.oneOfType([
+        PropTypes.null,
+        PropTypes.string,
+      ]),
+      subpremise: PropTypes.oneOfType([
+        PropTypes.null,
+        PropTypes.string,
+      ]),
+    }),
+    formattedAddress: PropTypes.string,
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    provider: PropTypes.string,
+  }),
+  mapArray: PropTypes.arrayOf(
+    PropTypes.shape,
+  ),
 };
 
 export default GoogleMaps;

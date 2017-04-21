@@ -28,13 +28,43 @@ const Weather = ({ destination, weather }) => {
 };
 
 Weather.defaultProps = {
-  weather: {},
-  destination: {},
+  weather: {
+    date: '',
+    highTemp: 0,
+    lowTemp: 0,
+    summary: '',
+    timeofDay: '',
+  },
+  destination: {
+    IataCode: '',
+    arrivalDate: '',
+    carrier: '',
+    city: '',
+    country: '',
+    departureDate: '',
+    imageUrl: [],
+    price: 0,
+  },
 };
 
 Weather.propTypes = {
-  weather: PropTypes.shape,
-  destination: PropTypes.shape,
+  weather: PropTypes.shape({
+    date: PropTypes.string,
+    highTemp: PropTypes.number,
+    lowTemp: PropTypes.number,
+    summary: PropTypes.string,
+    timeofDay: PropTypes.string,
+  }),
+  destination: PropTypes.shape({
+    IataCode: PropTypes.string,
+    arrivalDate: PropTypes.string,
+    carrier: PropTypes.string,
+    city: PropTypes.string,
+    country: PropTypes.string,
+    departureDate: PropTypes.string,
+    imageUrl: PropTypes.arrayOf(PropTypes.string),
+    price: PropTypes.number,
+  }),
 };
 
 export default Weather;

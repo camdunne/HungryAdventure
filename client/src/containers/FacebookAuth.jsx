@@ -46,12 +46,11 @@ class FacebookAuth extends React.Component {
 }
 
 FacebookAuth.defaultProps = {
-  queryDB: () => {},
   fbpicture: '',
 };
 
 FacebookAuth.propTypes = {
-  queryDB: PropTypes.func,
+  queryDB: PropTypes.func.isRequired,
   fbpicture: PropTypes.string,
 };
 

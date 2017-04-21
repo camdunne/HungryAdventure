@@ -121,8 +121,8 @@ class Destinations extends Component {
       <Search onSubmit={this.submit} />
       <Auth />
       <section id="banner">
-        <h2>Hungry Adventure</h2>
-        <p>Lets go on an adventure</p>
+        <h2>{'Hungry Adventure'}</h2>
+        <p>{'Let\'s go on an adventure'}</p>
       </section>
       <section className="customContainer">
         <Modal show={this.loadingStatus()}>
@@ -183,6 +183,12 @@ Destinations.propTypes = {
       imageUrl: PropTypes.arrayOf(PropTypes.string),
       price: PropTypes.number,
     })),
+    error: PropTypes.oneOfType([
+      PropTypes.null,
+      PropTypes.bool,
+    ]),
+    fetched: PropTypes.bool,
+    fetching: PropTypes.bool,
   }),
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,

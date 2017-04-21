@@ -125,7 +125,6 @@ class searchForm extends Component {
 }
 
 renderStartDatePicker.defaultProps = {
-  input: { onChange: () => {}, value: null },
   showTime: true,
   placeholder: '',
 };
@@ -133,10 +132,16 @@ renderStartDatePicker.defaultProps = {
 renderStartDatePicker.propTypes = {
   showTime: PropTypes.bool,
   placeholder: PropTypes.string,
+  input: PropTypes.shape({
+    onChange: PropTypes.func,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+    ]),
+  }).isRequired,
 };
 
 renderEndDatePicker.defaultProps = {
-  input: { onChange: () => {}, value: null },
   showTime: true,
   placeholder: '',
   defaultValue: new Date(),
@@ -146,14 +151,18 @@ renderEndDatePicker.propTypes = {
   showTime: PropTypes.bool,
   placeholder: PropTypes.string,
   defaultValue: PropTypes.instanceOf(Date),
+  input: PropTypes.shape({
+    onChange: PropTypes.func,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+    ]),
+  }).isRequired,
 };
 
-searchForm.defaultProps = {
-  handleSubmit: () => {},
-};
 
 searchForm.propTypes = {
-  handleSubmit: PropTypes.func,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 searchForm = reduxForm({

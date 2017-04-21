@@ -16,13 +16,13 @@ import { fetchFrommers } from '../actions/frommersAction';
 
 class DestinationEntry extends Component {
 
-  getRandomInt(min, max) {
+  getRandomInt = (min, max) => {
     const mini = Math.ceil(min);
     const maxi = Math.floor(max);
     return Math.floor(Math.random() * (maxi - mini)) + mini;
   }
 
-  handleSelect(destination) {
+  handleSelect = (destination) => {
     this.props.destinationSet(destination);
     this.props.flightBudget({
       price: destination.price,
@@ -56,11 +56,11 @@ class DestinationEntry extends Component {
           <div className="col-lg-4 col-sm-6" key={destination.city + destination.IataCode}>
             <div
               className="event-card"
-              onClick={() => { this.handleSelect(destination).bind(this); }}
+              onClick={() => { this.handleSelect(destination); }}
             >
               <img
                 src={
-                  destination.imageUrl[this.getRandomInt(0, destination.imageUrl.length).bind(this)]
+                  destination.imageUrl[this.getRandomInt(0, destination.imageUrl.length)]
                 }
                 className="customImg"
                 alt="Not Found"
@@ -120,6 +120,12 @@ DestinationEntry.propTypes = {
       imageUrl: PropTypes.arrayOf(PropTypes.string),
       price: PropTypes.number,
     })),
+    error: PropTypes.oneOfType([
+      PropTypes.null,
+      PropTypes.bool,
+    ]),
+    fetched: PropTypes.bool,
+    fetching: PropTypes.bool,
   }),
 };
 
