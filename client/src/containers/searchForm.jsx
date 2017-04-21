@@ -1,39 +1,50 @@
 // +++++ REACT SPECIFIC/REDUX
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // +++++ STYLES
 import { Form, Button, FormGroup } from 'react-bootstrap';
 import 'react-widgets/dist/css/react-widgets.css';
 
-
 // +++++ PLUGIN
 import { Field, reduxForm } from 'redux-form';
 import { DateTimePicker } from 'react-widgets';
 import moment from 'moment';
 import momentLocaliser from '../../../node_modules/react-widgets/lib/localizers/moment';
+
 momentLocaliser(moment);
 
 // +++++ COMPONENTS
 
-const renderStartDatePicker = ({ input: { onChange, value }, showTime, placeholder }) => (<DateTimePicker
-  onChange={onChange}
-  format="DD MMM YYYY"
-  time={showTime}
-  min={new Date()}
-  value={!value ? null : new Date(value)}
-  placeholder={placeholder}
-/>);
+const renderStartDatePicker = ({
+  input: { onChange, value },
+  showTime,
+  placeholder }) => (
+    <DateTimePicker
+      onChange={onChange}
+      format="DD MMM YYYY"
+      time={showTime}
+      min={new Date()}
+      value={!value ? null : new Date(value)}
+      placeholder={placeholder}
+    />
+);
 
-const renderEndDatePicker = ({ input: { onChange, value }, showTime, placeholder, defaultValue }) => (<DateTimePicker
-  onChange={onChange}
-  format="DD MMM YYYY"
-  time={showTime}
-  min={defaultValue}
-  value={!value ? null : new Date(value)}
-  placeholder={placeholder}
-
-/>);
+const renderEndDatePicker = ({
+  input: { onChange, value },
+  showTime,
+  placeholder,
+  defaultValue }) => (
+    <DateTimePicker
+      onChange={onChange}
+      format="DD MMM YYYY"
+      time={showTime}
+      min={defaultValue}
+      value={!value ? null : new Date(value)}
+      placeholder={placeholder}
+    />
+);
 const setDefault = (props) => {
   if (props.search) {
     if (props.search.values) {
@@ -52,13 +63,9 @@ const enableSubmit = (props) => {
   }
   return true;
 };
-
 class searchForm extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-  	const { handleSubmit, reset } = this.props;
+    const { handleSubmit } = this.props;
     return (<div>
       <center>
         <Form inline onSubmit={handleSubmit}>
@@ -80,7 +87,11 @@ class searchForm extends Component {
           <FormGroup>
             <div className="budgetSearch" >
               <Field
-                name="departDate" showTime={false} component={renderStartDatePicker} type="text" placeholder="Start Date"
+                name="departDate"
+                showTime={false}
+                component={renderStartDatePicker}
+                type="text"
+                placeholder="Start Date"
               />
             </div>
           </FormGroup>
@@ -88,7 +99,12 @@ class searchForm extends Component {
           <FormGroup>
             <div className="budgetSearch" >
               <Field
-                defaultValue={setDefault(this.props)} name="arrivalDate" showTime={false} component={renderEndDatePicker} type="text" placeholder="End Date"
+                defaultValue={setDefault(this.props)}
+                name="arrivalDate"
+                showTime={false}
+                component={renderEndDatePicker}
+                type="text"
+                placeholder="End Date"
               />
             </div>
           </FormGroup>
@@ -108,6 +124,40 @@ class searchForm extends Component {
   }
 }
 
+renderStartDatePicker.defaultProps = {
+  input: {},
+  showTime: true,
+  placeholder: '',
+};
+
+renderStartDatePicker.propTypes = {
+  input: PropTypes.shape,
+  showTime: PropTypes.bool,
+  placeholder: PropTypes.string,
+};
+
+renderEndDatePicker.defaultProps = {
+  input: {},
+  showTime: true,
+  placeholder: '',
+  defaultValue: new Date(),
+};
+
+renderEndDatePicker.propTypes = {
+  input: PropTypes.shape,
+  showTime: PropTypes.bool,
+  placeholder: PropTypes.string,
+  defaultValue: PropTypes.instanceOf(Date),
+};
+
+searchForm.defaultProps = {
+  handleSubmit: () => {},
+};
+
+searchForm.propTypes = {
+  handleSubmit: PropTypes.func,
+};
+
 searchForm = reduxForm({
   form: 'search',  // a unique identifier for this form
 })(searchForm);
@@ -116,5 +166,4 @@ const mapStateToProps = ({ form: { search } }) => ({
   search,
 });
 
-// (state, action,)
 export default connect(mapStateToProps, null)(searchForm, renderEndDatePicker);
