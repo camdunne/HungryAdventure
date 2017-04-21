@@ -9,7 +9,7 @@ module.exports = {
       description: '',
     }])((err, info) => {
       if (info[0] === undefined) {
-        res.send('"Not all those who wander are lost"');
+        res.send("");
       } else {
         res.send(info[0].description);
       }

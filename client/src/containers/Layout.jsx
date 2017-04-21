@@ -339,6 +339,7 @@ class Layout extends React.Component {
                         </a>
                       </p>
                     </div>
+
                   </div>
                 </div>
               </div>

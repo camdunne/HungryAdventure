@@ -17,6 +17,18 @@ momentLocaliser(moment);
 
 // +++++ COMPONENTS
 
+const validate = values => {
+  const errors = {}
+  if (!values.Budget) {
+    errors.Budget = 'Required';
+  } else if (isNaN(Number(values.Budget))) {
+    errors.Budget = 'Must be a number';
+  } else if (Number(values.age) < 0) {
+    errors.Budget = 'Sorry, you must have a +ve budget';
+  }
+  return errors
+}
+
 const renderStartDatePicker = ({
   input: { onChange, value },
   showTime,
@@ -45,6 +57,7 @@ const renderEndDatePicker = ({
       placeholder={placeholder}
     />
 );
+
 const setDefault = (props) => {
   if (props.search) {
     if (props.search.values) {
@@ -170,6 +183,7 @@ searchForm.propTypes = {
 
 searchForm = reduxForm({
   form: 'search',  // a unique identifier for this form
+  validate,
 })(searchForm);
 
 const mapStateToProps = ({ form: { search } }) => ({

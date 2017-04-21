@@ -22,6 +22,7 @@ class DestinationEntry extends Component {
     return Math.floor(Math.random() * (maxi - mini)) + mini;
   }
 
+
   handleSelect = (destination) => {
     this.props.destinationSet(destination);
     this.props.flightBudget({
@@ -30,6 +31,7 @@ class DestinationEntry extends Component {
     });
     this.props.fetchTerminal({ terminal: destination.IataCode });
     this.props.fetchGeo({ city: destination.city, country: destination.country })
+
     .then((result) => {
       this.props.fetchWeather({
         latitude: result.payload.latitude,
