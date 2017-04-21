@@ -39,7 +39,7 @@ class Layout extends React.Component {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
 
-  submit(values) {
+  submit = (values) => {
     console.log('VALUES', values);
     this.getLocation();
     const saveQueryObj = {
@@ -69,7 +69,7 @@ class Layout extends React.Component {
                 <h1 id="homeHeading">HUNGRY ADVENTURE</h1><font size="8px">Beta</font>
                 <hr />
                 <center>
-                  <Search onSubmit={this.submit.bind(this)} />
+                  <Search onSubmit={this.submit} />
                 </center>
               </div>
             </div>
@@ -95,7 +95,7 @@ class Layout extends React.Component {
           <div className="container services">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <h2 className="section-heading">What We Do</h2>
+                <h2 className="section-heading">{'What We Do'}</h2>
                 <hr className="primary" />
               </div>
             </div>
@@ -105,31 +105,31 @@ class Layout extends React.Component {
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="service-box">
                   <i className="fa fa-4x fa-diamond text-primary sr-icons" />
-                  <h3>Aggregate</h3>
+                  <h3>{'Aggregate'}</h3>
                   <p className="text-muted">
-                    We aggregate Skyscanner, Airbnb, Yelp, Google, Weather and more...
+                    {'We aggregate Skyscanner, Airbnb, Yelp, Google, Weather and more...'}
                   </p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="service-box">
                   <i className="fa fa-4x fa-paper-plane text-primary sr-icons" />
-                  <h3>Destinations</h3>
-                  <p className="text-muted">We generate options for you!</p>
+                  <h3>{'Destinations'}</h3>
+                  <p className="text-muted">{'We generate options for you!'}</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="service-box">
                   <i className="fa fa-4x fa-newspaper-o text-primary sr-icons" />
-                  <h3>Stay and Play </h3>
-                  <p className="text-muted">We present affordable and fun options!</p>
+                  <h3>{'Stay and Play'}</h3>
+                  <p className="text-muted">{'We present affordable and fun options!'}</p>
                 </div>
               </div>
               <div className="col-lg-3 col-md-6 text-center">
                 <div className="service-box">
                   <i className="fa fa-4x fa-heart text-primary sr-icons" />
-                  <h3>Story</h3>
-                  <p className="text-muted">You assemble a custom itinary and story</p>
+                  <h3>{'Story'}</h3>
+                  <p className="text-muted">{'You assemble a custom itinary and story'}</p>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ class Layout extends React.Component {
                   <img src="../../assets/8.jpg" className="img-responsive headImg" alt="" />
                   <div className="portfolio-box-caption">
                     <div className="portfolio-box-caption-content">
-                      <h3>Rio de Janeiro, Brazil</h3>
+                      <h3>{'Rio de Janeiro, Brazil'}</h3>
                     </div>
                   </div>
                 </a>
@@ -169,7 +169,7 @@ class Layout extends React.Component {
                   />
                   <div className="portfolio-box-caption">
                     <div className="portfolio-box-caption-content">
-                      <h3>Tokyo, Japan</h3>
+                      <h3>{'Tokyo, Japan'}</h3>
                     </div>
                   </div>
                 </a>
@@ -189,7 +189,7 @@ class Layout extends React.Component {
                   />
                   <div className="portfolio-box-caption">
                     <div className="portfolio-box-caption-content">
-                      <h3>Dubrovnik, Crotia</h3>
+                      <h3>{'Dubrovnik, Crotia'}</h3>
                     </div>
                   </div>
                 </a>
@@ -204,7 +204,7 @@ class Layout extends React.Component {
                   <img src="../../assets/paris.jpg" className="img-responsive headImg" alt="" />
                   <div className="portfolio-box-caption">
                     <div className="portfolio-box-caption-content">
-                      <h3>Paris, France</h3>
+                      <h3>{'Paris, France'}</h3>
                     </div>
                   </div>
                 </a>
@@ -224,7 +224,7 @@ class Layout extends React.Component {
                   />
                   <div className="portfolio-box-caption">
                     <div className="portfolio-box-caption-content">
-                      <h3>Al Haram, Egypt</h3>
+                      <h3>{'Al Haram, Egypt'}</h3>
                     </div>
                   </div>
                 </a>
@@ -239,7 +239,7 @@ class Layout extends React.Component {
                   <img src="../../assets/tajMahal.jpg" className="img-responsive headImg" alt="" />
                   <div className="portfolio-box-caption">
                     <div className="portfolio-box-caption-content">
-                      <h3>Agra, India</h3>
+                      <h3>{'Agra, India'}</h3>
                     </div>
                   </div>
                 </a>
@@ -251,7 +251,7 @@ class Layout extends React.Component {
         <aside className="bg-dark">
           <div className="container text-center">
             <div className="call-to-action">
-              <h2>Powered By</h2>
+              <h2>{'Powered By'}</h2>
               <div>
                 <div>
                   <img alt="" src="http://patrickcoombe.com/wp-content/uploads/2015/09/new-google-logo-2015.png" height="75" width="200" />
@@ -271,7 +271,7 @@ class Layout extends React.Component {
           <div className="container">
             <div className="container text-center">
               <div className="call-to-action">
-                <h2>Development Team</h2>
+                <h2>{'Development Team'}</h2>
                 <br />
                 <br />
                 <div>
@@ -280,9 +280,9 @@ class Layout extends React.Component {
                       <a href="http://michaeljchan.com" target="_blank" rel="noopener noreferrer">
                         <img alt="" className="profilePicture img-circle" src="http://michaeljchan.com/image/profile.PNG" height="65" width="65" />
                       </a>
-                      <h4>Michael Chan</h4>
-                      <h5>Product owner</h5>
-                      <h5>Software Engineer</h5>
+                      <h4>{'Michael Chan'}</h4>
+                      <h5>{'Product owner'}</h5>
+                      <h5>{'Software Engineer'}</h5>
                       <p>
                         <a href="http://github.com/ThinkFWD" target="_blank" rel="noopener noreferrer">
                           <img alt="" className="gitIcon" src="https://image.flaticon.com/icons/svg/23/23957.svg" height="40" width="40" />
@@ -296,9 +296,9 @@ class Layout extends React.Component {
                       <a href="https://github.com/supreme38" target="_blank" rel="noopener noreferrer">
                         <img alt="" className="profilePicture img-circle" src="https://avatars2.githubusercontent.com/u/14501778?v=3&s=460" height="65" width="65" />
                       </a>
-                      <h4>Vincent Liu</h4>
-                      <h5>Scrum master</h5>
-                      <h5>Software Engineer</h5>
+                      <h4>{'Vincent Liu'}</h4>
+                      <h5>{'Scrum master'}</h5>
+                      <h5>{'Software Engineer'}</h5>
                       <p>
                         <a href="https://github.com/supreme38" target="_blank" rel="noopener noreferrer">
                           <img alt="" className="gitIcon" src="https://image.flaticon.com/icons/svg/23/23957.svg" height="40" width="40" />
@@ -312,8 +312,8 @@ class Layout extends React.Component {
                       <a href="https://www.github.com/camdunne" target="_blank" rel="noopener noreferrer">
                         <img alt="" className="profilePicture img-circle" src="https://avatars1.githubusercontent.com/u/22266951?v=3&s=460" height="65" width="65" />
                       </a>
-                      <h4>Cameron Dunne</h4>
-                      <h5>Software Engineer</h5>
+                      <h4>{'Cameron Dunne'}</h4>
+                      <h5>{'Software Engineer'}</h5>
                       <br />
                       <p>
                         <a href="https://www.github.com/camdunne" target="_blank" rel="noopener noreferrer">
@@ -328,8 +328,8 @@ class Layout extends React.Component {
                       <a href="https://github.com/xbryan813x" target="_blank" rel="noopener noreferrer">
                         <img alt="" className="profilePicture img-circle" src="https://avatars1.githubusercontent.com/u/15056067?v=3&s=460" height="65" width="65" />
                       </a>
-                      <h4>Bryam Pacheco</h4>
-                      <h5>Software Engineer</h5>
+                      <h4>{'Bryam Pacheco'}</h4>
+                      <h5>{'Software Engineer'}</h5>
                       <br />
                       <p>
                         <a href="https://github.com/xbryan813x" target="_blank" rel="noopener noreferrer">
@@ -349,7 +349,7 @@ class Layout extends React.Component {
         <aside className="bg-dark">
           <div className="container text-center">
             <div className="call-to-action">
-              <h6>© 2017 Hungry Adventure All rights reserved. |
+              <h6>{'© 2017 Hungry Adventure All rights reserved. |'}
                  <a className="githubLink" href="https://github.com/hungry-adventure" target="_blank" rel="noopener noreferrer"> Hungry Adventure GitHub</a>
               </h6>
 

@@ -125,26 +125,24 @@ class searchForm extends Component {
 }
 
 renderStartDatePicker.defaultProps = {
-  input: {},
+  input: { onChange: () => {}, value: null },
   showTime: true,
   placeholder: '',
 };
 
 renderStartDatePicker.propTypes = {
-  input: PropTypes.shape,
   showTime: PropTypes.bool,
   placeholder: PropTypes.string,
 };
 
 renderEndDatePicker.defaultProps = {
-  input: {},
+  input: { onChange: () => {}, value: null },
   showTime: true,
   placeholder: '',
   defaultValue: new Date(),
 };
 
 renderEndDatePicker.propTypes = {
-  input: PropTypes.shape,
   showTime: PropTypes.bool,
   placeholder: PropTypes.string,
   defaultValue: PropTypes.instanceOf(Date),

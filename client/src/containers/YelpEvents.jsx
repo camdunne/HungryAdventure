@@ -44,7 +44,12 @@ class YelpEvents extends Component {
   }
 
   expand() {
-    this.state.flag === 'See More >>' ? (this.setState({ flag: 'See Less <<' }), this.setState({ show: '' })) : (this.setState({ flag: 'See More >>' }), this.setState({ show: ' hide' }));
+    if (this.state.flag === 'See More >>') {
+      this.setState({ flag: 'See Less <<' }); this.setState({ show: '' });
+    } else {
+      this.setState({ flag: 'See More >>' });
+      this.setState({ show: ' hide' });
+    }
     scroll.scrollMore(500, { delay: 100 });
   }
 
@@ -96,12 +101,19 @@ const mapStateToProps = state => ({
   ...state,
 });
 
+YelpEvents.defaultProps = {
+  currentEvents: () => {},
+  eventsImage: () => {},
+  yelpBudget: () => {},
+  current: {},
+  yelp: {},
+};
 YelpEvents.propTypes = {
-  currentEvents: PropTypes.Function,
-  eventsImage: PropTypes.Function,
-  yelpBudget: PropTypes.Function,
-  current: PropTypes.Object,
-  yelp: PropTypes.Object,
+  currentEvents: PropTypes.func,
+  eventsImage: PropTypes.func,
+  yelpBudget: PropTypes.func,
+  current: PropTypes.shape,
+  yelp: PropTypes.shape,
 };
 
 export default connect(mapStateToProps, { currentEvents, yelpBudget, eventsImage })(YelpEvents);

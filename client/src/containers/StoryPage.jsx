@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DonutChart from 'react-donut-chart';
 import { Col, Checkbox } from 'react-bootstrap';
@@ -6,9 +7,9 @@ import GoogleMaps from './GoogleMaps';
 import { pinArray, yelpPrice } from '../../utils/storyPageHelpers';
 
 class StoryPage extends Component {
-   componentWillMount() {
+  componentWillMount() {
     window.scrollTo(0, 0);
-   }
+  }
 
   render() {
     const budget = this.props.budget.original;
@@ -39,9 +40,9 @@ class StoryPage extends Component {
                   <h3 className="text-white h3">${this.props.destination.price}</h3>
                   <div className="clearfix" />
                   <div className="text-white rule">
-                    <p>{this.props.destination.originTerminal} to {this.props.destination.IataCode}</p>
+                    <p>{`${this.props.destination.originTerminal} to ${this.props.destination.IataCode}`}</p>
                     <p>{this.props.destination.carrier}</p>
-                    <p>{this.props.destination.arrivalDate} until {this.props.destination.departureDate}</p>
+                    <p>{`${this.props.destination.arrivalDate} until ${this.props.destination.departureDate}`}</p>
                   </div>
                   <a href={this.props.destination.url} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
                   <Checkbox className="right" />
@@ -71,14 +72,14 @@ class StoryPage extends Component {
             <div className="blankContainer">
               <div className="container">
                 <Col sm={10}>
-                  <h3 className="price-title text-aquamarine h3">Restaurants</h3>
+                  <h3 className="price-title text-aquamarine h3">{'Restaurants'}</h3>
                   {this.props.yelpEvents.map((event, i) =>
                     <div key={event.name}>
                       <h3 className="text-white h3">~${yelpPrice(event.price)}</h3>
                       <div className="clearfix" />
                       <div className="text-white rule">
                         <p>{event.name}</p>
-                        <p>{event.location.address1} {event.location.city} {event.location.state}, {event.location.country} {event.location.zip_code}</p>
+                        <p>{`${event.location.address1} ${event.location.city} ${event.location.state}, ${event.location.country} ${event.location.zip_code}`}</p>
                         <p>{event.phone}</p>
                       </div>
                       <a href={event.url} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Link</a>
@@ -139,6 +140,24 @@ class StoryPage extends Component {
     );
   }
 }
+
+StoryPage.defaultProps = {
+  budget: {},
+  destination: {},
+  locator: {},
+  hotel: {},
+  yelpEvents: [],
+  viatorEvents: [],
+};
+
+StoryPage.propTypes = {
+  budget: PropTypes.shape,
+  destination: PropTypes.shape,
+  locator: PropTypes.shape,
+  hotel: PropTypes.shape,
+  yelpEvents: PropTypes.instanceOf(Array),
+  viatorEvents: PropTypes.instanceOf(Array),
+};
 
 const mapStateToProps = ({ current, geo, budget }) => ({
   ...current,
