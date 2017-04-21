@@ -126,16 +126,6 @@ class destinationPage extends Component {
   }
 }
 
-const mapStateToProps = ({ geo, hotels, destination, budget, current, frommers, weather }) => ({
-  geo,
-  hotels,
-  destination,
-  budget,
-  current,
-  frommers,
-  weather,
-  ...current,
-});
 destinationPage.defaultProps = {
   current: {
     destination: {},
@@ -161,8 +151,14 @@ destinationPage.defaultProps = {
     price: 0,
   },
   geo: {
-    locator: {},
-    terminal: {},
+    locator: {
+      latitude: 0,
+      longitude: 0,
+    },
+    terminal: {
+      latitude: 0,
+      longitude: 0,
+    },
   },
   hotels: {
     hotels: [],
@@ -195,9 +191,7 @@ destinationPage.propTypes = {
         PropTypes.null,
         PropTypes.string,
       ]),
-      pictures: PropTypes.arrayOf(
-        PropTypes.string,
-      ),
+      pictures: PropTypes.arrayOf(PropTypes.string),
       price: PropTypes.number,
       rating: PropTypes.number,
       url: PropTypes.string,
@@ -237,17 +231,13 @@ destinationPage.propTypes = {
           address3: PropTypes.string,
           city: PropTypes.string,
           country: PropTypes.string,
-          display_address: PropTypes.arrayOf(
-            PropTypes.string,
-          ),
+          display_address: PropTypes.arrayOf(PropTypes.string),
           name: PropTypes.string,
           phone: PropTypes.string,
           price: PropTypes.string,
           rating: PropTypes.number,
           review_count: PropTypes.number,
-          transactions: PropTypes.arrayOf(
-            PropTypes.string,
-          ),
+          transactions: PropTypes.arrayOf(PropTypes.string),
           url: PropTypes.string,
         }),
       }),
@@ -354,9 +344,7 @@ destinationPage.propTypes = {
           PropTypes.null,
           PropTypes.string,
         ]),
-        pictures: PropTypes.arrayOf(
-          PropTypes.string,
-        ),
+        pictures: PropTypes.arrayOf(PropTypes.string),
         price: PropTypes.number,
         rating: PropTypes.number,
         url: PropTypes.string,
@@ -376,5 +364,16 @@ destinationPage.propTypes = {
     }),
   }),
 };
+
+const mapStateToProps = ({ geo, hotels, destination, budget, current, frommers, weather }) => ({
+  geo,
+  hotels,
+  destination,
+  budget,
+  current,
+  frommers,
+  weather,
+  ...current,
+});
 
 export default connect(mapStateToProps, null)(destinationPage);

@@ -5,6 +5,6 @@ export function fetchEvents(placeObj) {
     return axios.get('/api/yelp', {
       params: placeObj })
       .then(response => dispatch({ type: 'FETCH_EVENTS_FULFILLED', payload: response.data.businesses }))
-      .catch(err => dispatch({ type: 'FETCH_GEO_REJECTED', payload: err }));
+      .catch(err => dispatch({ type: 'FETCH_EVENTS_REJECTED', payload: err }));
   };
 }

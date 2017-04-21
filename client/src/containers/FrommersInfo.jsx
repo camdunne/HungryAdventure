@@ -4,11 +4,15 @@ import PropTypes from 'prop-types';
 const FrommersInfo = ({ frommers }) => <div>{frommers.description}</div>;
 
 FrommersInfo.defaultProps = {
-  frommers: {},
+  frommers: {
+    description: '',
+  },
 };
 
 FrommersInfo.propTypes = {
-  frommers: PropTypes.shape,
+  frommers: PropTypes.shape({
+    description: PropTypes.string,
+  }),
 };
 
 export default FrommersInfo;

@@ -52,8 +52,8 @@ class DestinationEntry extends Component {
   render() {
     return (
       <section className="no-padding" id="locations">
-        {this.props.destinations.destinations.map(destination => (
-          <div className="col-lg-4 col-sm-6" key={destination.city + destination.IataCode}>
+        {this.props.destinations.destinations.map((destination) => (
+          <div className="col-lg-4 col-sm-6" key={destination.city + destination.price}>
             <div
               className="event-card"
               onClick={() => { this.handleSelect(destination); }}

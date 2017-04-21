@@ -18,7 +18,7 @@ class HotelEntry extends Component {
     };
   }
 
-  add(hotel, props) {
+  add = (hotel, props) => {
     this.props.currentHotel({ hotel });
     this.props.hotelBudget({
       id: hotel.id,
@@ -30,7 +30,7 @@ class HotelEntry extends Component {
     this.props.hotelImage({ hotel: hotel.pictures[0] });
   }
 
-  toggle({ hotels }) {
+  toggle = ({ hotels }) => {
     this.props.toggleHotels({ hotels });
     scroll.scrollMore(500, { delay: 100 });
     if (this.state.flag === 'See More >>') {
@@ -39,12 +39,12 @@ class HotelEntry extends Component {
       this.setState({ flag: 'See More >>' });
     }
   }
-  select(hotel, toggle) {
+  select = (hotel, toggle) => {
     this.props.toggleSelect({ hotel, select: toggle.select });
   }
-  clickHotel(hotel, props) {
-    this.add(hotel, props).bind(this);
-    this.select(hotel, props.toggle).bind(this);
+  clickHotel = (hotel, props) => {
+    this.add(hotel, props);
+    this.select(hotel, props.toggle);
   }
 
   render() {
@@ -59,7 +59,7 @@ class HotelEntry extends Component {
           <Row className="rowTitle">
             <Col xs={6} md={6}><h2>Hotels</h2></Col>
             <Col xs={6} md={6}>
-              <div className="seeAll" onClick={() => this.toggle(this.props.toggle).bind(this)}>
+              <div className="seeAll" onClick={() => this.toggle(this.props.toggle)}>
                 {this.state.flag}
               </div>
             </Col>
@@ -74,7 +74,7 @@ class HotelEntry extends Component {
                  (index >= 3 && !this.props.toggle.hotels) ? ' none' : ''
                  }${(this.props.toggle.select === hotel.id) ? ' select' : ''}`
               }
-              onClick={() => { this.clickHotel(hotel, this.props).bind(this); }}
+              onClick={() => { this.clickHotel(hotel, this.props); }}
             >
               <div className="event-card hotel portfolio-box">
                 <img className="customImg" alt="" src={hotel.pictures[0]} />

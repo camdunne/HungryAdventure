@@ -7,7 +7,6 @@ import { googleMaps } from '../keys/mapsKey';
 
 
 const GoogleMaps = ({ locator, mapArray }) => {
-  console.log('MAPARRAY', mapArray);
   if (locator === undefined) {
     return (
       <div>loading</div>
