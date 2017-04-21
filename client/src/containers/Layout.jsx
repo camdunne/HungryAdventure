@@ -69,7 +69,7 @@ class Layout extends React.Component {
                 <h1 id="homeHeading">HUNGRY ADVENTURE</h1><font size="8px">Beta</font>
                 <hr />
                 <center>
-                  <Search onSubmit={this.submit} />
+                  <Search onSubmit={this.submit.bind(this)} />
                 </center>
               </div>
             </div>
