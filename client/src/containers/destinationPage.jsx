@@ -88,7 +88,9 @@ class destinationPage extends Component {
       </div>
 
       <div className="pageContainer">
-        <Col sm={4} xs={12} className="weatherPadding mobileSpacing"> <Weather /></Col>
+        <Col sm={4} xs={12} className="weatherPadding mobileSpacing">
+          <Weather weather={this.props.weather.weather} destination={this.props.destination} />
+        </Col>
         <Col sm={4} xs={12} className="donut mobileSpacing"> <DonutChart
           data={[{ label: `Remaining ( $ ${totalBudget} )`,
             value: totalBudget,
@@ -124,13 +126,14 @@ class destinationPage extends Component {
   }
 }
 
-const mapStateToProps = ({ geo, hotels, destination, budget, current, frommers }) => ({
+const mapStateToProps = ({ geo, hotels, destination, budget, current, frommers, weather }) => ({
   geo,
   hotels,
   destination,
   budget,
   current,
   frommers,
+  weather,
   ...current,
 });
 destinationPage.defaultProps = {
@@ -140,6 +143,7 @@ destinationPage.defaultProps = {
   geo: {},
   hotels: {},
   frommers: {},
+  weather: {},
 };
 destinationPage.propTypes = {
   current: PropTypes.shape,
@@ -148,6 +152,7 @@ destinationPage.propTypes = {
   geo: PropTypes.shape,
   hotels: PropTypes.shape,
   frommers: PropTypes.shape,
+  weather: PropTypes.shape,
 };
 
 export default connect(mapStateToProps, null)(destinationPage);

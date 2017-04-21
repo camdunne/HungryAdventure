@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Col, Button, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
+import Scroll from 'react-scroll';
 import { currentHotel } from '../actions/currentStateAction';
 import { hotelBudget } from '../actions/budgetAction';
 import { hotelImage } from '../actions/budgetBarAction';
 import { toggleHotels, toggleSelect } from '../actions/toggleAction';
-import Scroll from 'react-scroll';
+
 const scroll = Scroll.animateScroll;
 
 class HotelEntry extends Component {
@@ -56,7 +58,11 @@ class HotelEntry extends Component {
         <div className="hotelContainer">
           <Row className="rowTitle">
             <Col xs={6} md={6}><h2>Hotels</h2></Col>
-            <Col xs={6} md={6}><div className="seeAll" onClick={() => this.toggle(this.props.toggle).bind(this)}>{this.state.flag}</div></Col>
+            <Col xs={6} md={6}>
+              <div className="seeAll" onClick={() => this.toggle(this.props.toggle).bind(this)}>
+                {this.state.flag}
+              </div>
+            </Col>
           </Row>
 
           {this.props.hotels.hotels.map((hotel, index) => (
@@ -72,7 +78,11 @@ class HotelEntry extends Component {
             >
               <div className="event-card hotel portfolio-box">
                 <img className="customImg" alt="" src={hotel.pictures[0]} />
-                <div className="portfolio-box-caption"><div className="iconWrapper"><span className="glyphicon glyphicon-shopping-cart" /></div></div>
+                <div className="portfolio-box-caption">
+                  <div className="iconWrapper">
+                    <span className="glyphicon glyphicon-shopping-cart" />
+                  </div>
+                </div>
                 <div className="card-text hotel-text">
                   <div className="hotelInfo">
                     <span className="infoSpacing">${hotel.price}</span>
@@ -90,7 +100,26 @@ class HotelEntry extends Component {
       </div>
     );
   }
-  }
+}
+HotelEntry.defaultProps = {
+  currentHotel: () => {},
+  hotelBudget: () => {},
+  hotelImage: () => {},
+  toggleHotels: () => {},
+  toggleSelect: () => {},
+  hotels: {},
+  toggle: {},
+};
+
+HotelEntry.propTypes = {
+  currentHotel: PropTypes.func,
+  hotelBudget: PropTypes.func,
+  hotelImage: PropTypes.func,
+  toggleHotels: PropTypes.func,
+  toggleSelect: PropTypes.func,
+  hotels: PropTypes.shape,
+  toggle: PropTypes.shape,
+};
 
 const mapStateToProps = ({ hotels, destination, budget, toggle }) => ({
   hotels,

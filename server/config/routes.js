@@ -1,4 +1,3 @@
-const flightController = require('../controllers/flights.js');
 const anywhereController = require('../controllers/anywhere.js');
 const geocoderController = require('../controllers/geocoder.js');
 const hotelController = require('../controllers/hotels.js');
@@ -10,7 +9,6 @@ const frommersController = require('../controllers/frommers.js');
 const googlePlacesController = require('../controllers/googlePlacesFlights');
 
 module.exports = (app) => {
-  app.get('/api/flights', flightController.getFlights);
   app.get('/api/geocoder', geocoderController.location);
   app.get('/api/weather', weatherController.getWeather);
   app.get('/api/yelp', yelpController.getEvents);
