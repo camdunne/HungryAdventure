@@ -11,12 +11,8 @@ const DestinationList = ({ redirect }) => (
   </div>
 );
 
-DestinationList.defaultProps = {
-  redirect: {},
-};
-
 DestinationList.propTypes = {
-  redirect: PropTypes.shape,
+  redirect: PropTypes.func.isRequired,
 };
 
 export default DestinationList;

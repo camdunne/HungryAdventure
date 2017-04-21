@@ -150,21 +150,43 @@ class Destinations extends Component {
 }
 
 Destinations.defaultProps = {
-  resetBudget: () => {},
-  budget: {},
-  getBudget: () => {},
-  fetchDestinations: () => {},
-  destinations: {},
-  history: {},
+  budget: { original: '',
+    flight: 0,
+    hotel: 0,
+    loading: false,
+    viatorEvents: 0,
+    yelpEvents: 0,
+  },
+  destinations: { destinations: [] },
 };
 
 Destinations.propTypes = {
-  resetBudget: PropTypes.func,
-  budget: PropTypes.shape,
-  getBudget: PropTypes.func,
-  fetchDestinations: PropTypes.func,
-  destinations: PropTypes.shape,
-  history: PropTypes.shape,
+  resetBudget: PropTypes.func.isRequired,
+  getBudget: PropTypes.func.isRequired,
+  fetchDestinations: PropTypes.func.isRequired,
+  budget: PropTypes.shape({
+    flight: PropTypes.number,
+    hotel: PropTypes.number,
+    loading: PropTypes.bool,
+    original: PropTypes.string,
+    viatorEvents: PropTypes.number,
+    yelpEvents: PropTypes.number,
+  }),
+  destinations: PropTypes.shape({
+    destinations: PropTypes.arrayOf(PropTypes.shape({
+      IataCode: PropTypes.string,
+      arrivalDate: PropTypes.string,
+      carrier: PropTypes.string,
+      city: PropTypes.string,
+      country: PropTypes.string,
+      departureDate: PropTypes.string,
+      imageUrl: PropTypes.arrayOf(PropTypes.string),
+      price: PropTypes.number,
+    })),
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = ({ destinations, budget }) => ({

@@ -16,13 +16,13 @@ import { fetchFrommers } from '../actions/frommersAction';
 
 class DestinationEntry extends Component {
 
-  getRandomInt = (min, max) => {
+  getRandomInt(min, max) {
     const mini = Math.ceil(min);
     const maxi = Math.floor(max);
     return Math.floor(Math.random() * (maxi - mini)) + mini;
   }
 
-  handleSelect = (destination) => {
+  handleSelect(destination) {
     this.props.destinationSet(destination);
     this.props.flightBudget({
       price: destination.price,
@@ -56,11 +56,11 @@ class DestinationEntry extends Component {
           <div className="col-lg-4 col-sm-6" key={destination.city + destination.IataCode}>
             <div
               className="event-card"
-              onClick={() => { this.handleSelect(destination); }}
+              onClick={() => { this.handleSelect(destination).bind(this); }}
             >
               <img
                 src={
-                  destination.imageUrl[this.getRandomInt(0, destination.imageUrl.length)]
+                  destination.imageUrl[this.getRandomInt(0, destination.imageUrl.length).bind(this)]
                 }
                 className="customImg"
                 alt="Not Found"
@@ -78,37 +78,49 @@ class DestinationEntry extends Component {
 }
 
 DestinationEntry.defaultProps = {
-  destinationSet: () => {},
-  flightBudget: () => {},
-  budget: {},
-  fetchTerminal: () => {},
-  fetchGeo: () => {},
-  fetchWeather: () => {},
-  fetchHotels: () => {},
-  fetchEvents: () => {},
-  destinationImage: () => {},
-  fetchViator: () => {},
-  currentDestination: () => {},
-  fetchFrommers: () => {},
-  destinations: {},
-  redirect: () => {},
+  budget: { original: '',
+    flight: 0,
+    hotel: 0,
+    loading: false,
+    viatorEvents: 0,
+    yelpEvents: 0,
+  },
+  destinations: { destinations: [] },
 };
 
 DestinationEntry.propTypes = {
-  destinationSet: PropTypes.func,
-  flightBudget: PropTypes.func,
-  budget: PropTypes.shape,
-  fetchTerminal: PropTypes.func,
-  fetchGeo: PropTypes.func,
-  fetchWeather: PropTypes.func,
-  fetchHotels: PropTypes.func,
-  fetchEvents: PropTypes.func,
-  destinationImage: PropTypes.func,
-  fetchViator: PropTypes.func,
-  currentDestination: PropTypes.func,
-  fetchFrommers: PropTypes.func,
-  destinations: PropTypes.shape,
-  redirect: PropTypes.func,
+  destinationSet: PropTypes.func.isRequired,
+  flightBudget: PropTypes.func.isRequired,
+  fetchTerminal: PropTypes.func.isRequired,
+  fetchGeo: PropTypes.func.isRequired,
+  fetchWeather: PropTypes.func.isRequired,
+  fetchHotels: PropTypes.func.isRequired,
+  fetchEvents: PropTypes.func.isRequired,
+  destinationImage: PropTypes.func.isRequired,
+  fetchViator: PropTypes.func.isRequired,
+  currentDestination: PropTypes.func.isRequired,
+  fetchFrommers: PropTypes.func.isRequired,
+  redirect: PropTypes.func.isRequired,
+  budget: PropTypes.shape({
+    flight: PropTypes.number,
+    hotel: PropTypes.number,
+    loading: PropTypes.bool,
+    original: PropTypes.string,
+    viatorEvents: PropTypes.number,
+    yelpEvents: PropTypes.number,
+  }),
+  destinations: PropTypes.shape({
+    destinations: PropTypes.arrayOf(PropTypes.shape({
+      IataCode: PropTypes.string,
+      arrivalDate: PropTypes.string,
+      carrier: PropTypes.string,
+      city: PropTypes.string,
+      country: PropTypes.string,
+      departureDate: PropTypes.string,
+      imageUrl: PropTypes.arrayOf(PropTypes.string),
+      price: PropTypes.number,
+    })),
+  }),
 };
 
 const mapStateToProps = ({ destinations, budget, geo, bar }) => ({
